@@ -11,10 +11,7 @@ default_args = {
     'retry_delay': timedelta(minutes=5),
 }
 
-dag = DAG('mysql_to_gcs',
-           start_date = datetime(2018, 1, 28),
-           schedule_interval = '*/5 * * * *',
-           default_args=default_args)
+dag = DAG('mysql_to_gcs', default_args=default_args)
 
 export_actor = MySqlToGoogleCloudStorageOperator(
     task_id='extract_actors',
